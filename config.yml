@@ -1,0 +1,12 @@
+server:
+  port: 42335
+  log: "./access.log"
+
+# 代理服务地址
+openapi:
+  host: localhost
+  port: 22039
+
+mgo:
+  urls: localhost:27017
+  db: access

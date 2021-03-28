@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  app:
+    image: registry.cn-shenzhen.aliyuncs.com/pangxieke/reverse:lastest
+    ports:
+      - 42335:42335
+    environment:
+      - "GO_ENV=test"
+      - "SERVER_PORT=42335"
+      - "SERVER_LOG=/data/logs/reverse/access.log"
+      - "OPENAPI_HOST=localhost.114"
+      - "OPENAPI_PORT=22039"
+      - "MGO_URLS=localhost:27017"
+      - "MGO_DB=access"
+    container_name: reverse
+    volumes:
+      - /data/logs/reverse:/data/logs/reverse
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+networks:
+  default:
+    external:
+      name: test_default
